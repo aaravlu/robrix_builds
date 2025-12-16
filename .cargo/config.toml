@@ -12,7 +12,7 @@ rustflags = [
 
 [profile.release]
 codegen-units = 1
-debug = false
+# debug = false
 lto = true
 opt-level = 's'
 panic = "abort"
