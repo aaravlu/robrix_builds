@@ -12,6 +12,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - name: Install Linux deps
+        if: matrix.os == 'linux-2022'
+        run: |
+          sudo apt install libssl-dev libsqlite3-dev pkg-config binfmt-support libxcursor-dev libx11-dev libasound2-dev libpulse-dev libwayland-dev libxkbcommon-dev
       - name: Windows Config
         if: matrix.os == 'windows-2022'
         run: |
@@ -54,7 +58,7 @@ jobs:
       - name: Build
         shell: pwsh
         run: |
-          cd robrix/robrix-rs
+          cd robrix
           cargo b -r
 
       - name: Archive
